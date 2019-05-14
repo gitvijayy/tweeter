@@ -19,7 +19,24 @@ body {
   color: #244751;
   background-color: #eee;
   font-family: 'Roboto Condensed', sans-serif;
+  
+  
 }
+
+main {
+  width: 450px;
+  
+  background-color: white;
+  padding-top: 140px;
+ 
+  margin-left: 32em;
+  position: relative;
+  height:100%
+  
+
+}
+
+
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
