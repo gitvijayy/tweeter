@@ -1,13 +1,8 @@
 .new-tweet {
   background-color: #eee;
-  /* margin: 2em; */
-  margin: 2em;
-  
-  border-radius: 7px;
-  
-  
+  margin: 2em; 
+  border-radius: 7px;    
   padding: 0.2em
-
  }
 
  .new-tweet form {
@@ -22,9 +17,7 @@
  .new-tweet .counter {
   margin-left: 78%;
   font-style: italic;
-  font-size: small;
-
-  
+  font-size: small;  
  }
 
  .new-tweet h2 {
