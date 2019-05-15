@@ -10,7 +10,7 @@ $(document).ready(function() {
     if(balanceChars<0){
       $(this).siblings('.counter').css( "color", "red" )
     } else {
-      $(this).siblings('.counter').css( "color", "initial" )
+      $(this).siblings('.counter').css( "color", "#f8f9fa" )
     }
 
   });
