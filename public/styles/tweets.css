@@ -12,10 +12,6 @@
   opacity: 1;
 }
 
-/* .tweets-container header {
-  padding-bottom: 0.5em;
-} */
-
 .tweets-container img {
   margin-top: 5px;
   width: 50px;
@@ -44,7 +40,6 @@
 
 .tweets-container p {
   padding: 15px;
-  /* width:100%; */
   margin-top: 12px;
   height: 84px;
   background-color: #f8f9fa;

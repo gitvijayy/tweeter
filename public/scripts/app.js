@@ -57,19 +57,53 @@ const data = [
     "created_at": 1461113796368
   },
 
-{"user":{"name":"Marcus Pacciani","handle":"@MrPacciani",
-"avatars":{"small":"https://vanillicon.com/99465792e4540625e0e02c6f274dfa6c_50.png",
-"regular":"https://vanillicon.com/99465792e4540625e0e02c6f274dfa6c.png",
-"large":"https://vanillicon.com/99465792e4540625e0e02c6f274dfa6c_200.png"}},
-"content":{"text":"sfsfsfsfsf"},"created_at":1557908223499}
+  {
+    "user": {
+      "name": "Marcus Pacciani", "handle": "@MrPacciani",
+      "avatars": {
+        "small": "https://vanillicon.com/99465792e4540625e0e02c6f274dfa6c_50.png",
+        "regular": "https://vanillicon.com/99465792e4540625e0e02c6f274dfa6c.png",
+        "large": "https://vanillicon.com/99465792e4540625e0e02c6f274dfa6c_200.png"
+      }
+    },
+    "content": { "text": "sfsfsfsfsf" }, "created_at": 1557908223499
+  }
 
 
 ];
 
+$(document).ready(() => {
 
+  const createTweetElement = (tweet) => {
+
+    let tweetPost = $('<article>');
+
+    tweetPost.append($(`<img src = ${tweet.user.avatars["small"]}>`));
+    tweetPost.append($(`<h2>`).text(tweet.user.name))
+    tweetPost.append($(`<h3>`).text(tweet.user.handle))
+    tweetPost.append($(`<p>`).text(tweet.content.text))
+    tweetPost.append($(`<footer>`).text(convertMS(Date.now() - tweet.created_at)))
+
+    return tweetPost;
+
+  }
+
+  const renderTweets = (tweets) => {
+
+    tweets.forEach((tweetData) => {
+      let $tweet = createTweetElement(tweetData);
+      $('.tweets-container').append($tweet);
+    });
+
+  };
+
+  renderTweets(data);
+
+});
 
 
 const convertMS = (milliseconds) => {
+
   var days, hrs, mins, secs, year;
   secs = Math.floor(milliseconds / 1000);
   mins = Math.floor(secs / 60);
@@ -93,42 +127,4 @@ const convertMS = (milliseconds) => {
     return `${secs} sec ago`;
   }
 
-
-  // return {
-  //     year: year,
-  //     day: day,
-  //     hrs: hour,
-  //     minute: minute,
-  //     seconds: seconds
-  // };
 }
-
-$(document).ready(() => {
-
-  //jQuery("time.timeago").timeago();
-
-  const createTweetElement = (tweet) => {
-
-    let tweetPost = $('<article>');
-  
-    tweetPost.append($(`<img src = ${tweet.user.avatars["small"]}>`));
-    tweetPost.append($(`<h2>`).text(tweet.user.name))
-    tweetPost.append($(`<h3>`).text(tweet.user.handle))
-    tweetPost.append($(`<p>`).text(tweet.content.text))
-    tweetPost.append($(`<footer>`).text(convertMS(Date.now() - tweet.created_at)))
-  
-    return tweetPost;
-  
-  }
-  
-  const renderTweets = (tweets) => {
-  
-    tweets.forEach((tweetData) => {
-      let $tweet = createTweetElement(tweetData);
-      $('.tweets-container').append($tweet);
-    });
-  
-  };
-  renderTweets(data);
-
-});
