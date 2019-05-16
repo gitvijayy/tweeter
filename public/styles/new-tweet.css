@@ -1,8 +1,10 @@
 .new-tweet {
+  display: none;
   background-color: #343a40;
   margin: 2em; 
   border-radius: 7px;    
   padding: 0.2em
+  
  }
 
  .new-tweet form {

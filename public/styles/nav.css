@@ -22,3 +22,34 @@
   float: left;
 }
 
+#nav-bar .not-clicked {
+  float:right;
+  margin-top: 1em;
+  height:40px;
+  width:100px;
+  opacity: 0.7;
+
+}
+
+#nav-bar .not-clicked:hover{
+  opacity: 1;
+  border: 1.5px solid #343a40;
+}
+
+#nav-bar .clicked {
+  float:right;
+  margin-top: 1em;
+  height:40px;
+  width:100px;
+  
+  opacity: 1;
+  border: 1.5px solid #343a40;
+}
+
+
+
+
+
+
+
+

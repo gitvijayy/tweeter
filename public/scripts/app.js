@@ -3,18 +3,14 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-
 /*
  * Client-side JS logic goes here
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-
 $(document).ready(() => {
 
-  
   const createTweetElement = (tweet) => {
-
     let tweetPost = $('<article>');
     tweetPost.append($(`<img src = ${tweet.user.avatars["small"]}>`));
     tweetPost.append($(`<h2>`).text(tweet.user.name))
@@ -22,19 +18,15 @@ $(document).ready(() => {
     tweetPost.append($(`<p>`).text(tweet.content.text))
     tweetPost.append($(`<footer>`).text(convertMS(Date.now() - tweet.created_at)))
     return tweetPost;
-
   }
 
   const renderTweets = (tweets) => {
-
     tweets = tweets.sort((a, b) => b.created_at - a.created_at);
     $('.tweets-container').empty();
-    
     tweets.forEach((tweetData) => {
       let $tweet = createTweetElement(tweetData);
       $('.tweets-container').append($tweet);
     });
-
   };
 
   const getTweets = () => {
@@ -45,43 +37,41 @@ $(document).ready(() => {
   }
 
   const $button = $('#load-tweets');
-
   $button.on('submit', function (event) {
-
     event.preventDefault();
-    //$(".new-tweet h5").remove();
-    
     const error = $('.char').val();
-    if ( error === "") {
-      //$(".new-tweet").append('<h5>')
+    if (error === "") {
       $(".error").slideDown();
       $(".error").text("Invalid tweet");
-      //$(".new-tweet h5").text("Invalid tweet").css({"margin": "0", "color": "red", "text-align": "center"})
-    } else if (error.length>140) {
+    } else if (error.length > 140) {
       $(".error").slideDown();
       $(".error").text("Tweet too long");
-      //$(".new-tweet").append('<h5>')
-      //$(".new-tweet h5").text("Tweet too long").css({"margin": "0", "color": "red", "text-align": "center"})
     } else {
       $(".error").slideUp();
- 
-$.post("/tweets", $(this).serialize())
-$(this).trigger("reset");
-
-getTweets()   
-getTweets();
+      $.post("/tweets", $(this).serialize())
+      $(this).trigger("reset");
+      getTweets()
+      getTweets();
     }
-   
   });
 
+  const $button1 = $('#nav-bar input');
+  $button1.on('click', function () {
+    let $newTweet = $(".new-tweet");
+    if ($newTweet.css("display") === "none") {
+      $newTweet.slideDown();
+      $(this).removeClass('not-clicked').addClass('clicked')
+    } else {
+      $newTweet.slideUp();
+      $(this).removeClass('clicked').addClass('not-clicked')
+    }
+    $newTweet.focus();
+  })
   getTweets()
   getTweets();
-
 });
 
-
 const convertMS = (milliseconds) => {
-
   var days, hrs, mins, secs, year;
   secs = Math.floor(milliseconds / 1000);
   mins = Math.floor(secs / 60);
@@ -92,7 +82,6 @@ const convertMS = (milliseconds) => {
   hrs = hrs % 24;
   year = Math.floor(days / 365);
   days = days % 365;
-
   if (year > 0) {
     return `${year} year ago`;
   } else if (days > 0) {
@@ -104,5 +93,4 @@ const convertMS = (milliseconds) => {
   } else {
     return `${secs} sec ago`;
   }
-
 }
