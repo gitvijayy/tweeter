@@ -18,9 +18,9 @@ $(document).ready(() => {
       .append($(`<h3>`).text(tweet.user.handle))
       .append($(`<p>`).text(tweet.content.text))
       .append($(`<footer class = "timerIcon">`).text(`${convertMS(Date.now() - tweet.created_at)}`))
-      .append($(`<a id = "flag" href="" >`).text(`🚩`))
-      .append($(`<a id = "retweet" href="" >`).text(`🔃`))
-      .append($(`<a id = "like" href="">`).text(`👍`))
+      .append($(`<button type = "submit" id = "flag" >`).text(`🚩`))
+      .append($(`<button type = "submit" id = "retweet" >`).text(`🔃`))
+      .append($(`<button type = "submit" id = "like">`).text(`👍`))
   
 
 
@@ -77,11 +77,9 @@ $(document).ready(() => {
 
   getTweets();
 
-  $(".tweets-container #retweet").click(function(e) {
-    e.preventDefault();
-    alert('clicked');  
-    //return false;  
-  });  
+   
+
+  
 
 });
 

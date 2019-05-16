@@ -15,13 +15,10 @@ $(document).ready(function () {
 
   });
 
-  $('a').click(function (event) {
-    // var id = $(this).attr("id");
-    // alert(id);
 
-    console.log("ad")
-});
-
+  $(document).on("click", "#retweet", function(){
+console.log($(this).siblings("h3").text())
+  })
 
   // $(`.flag`).click(function(e) {
   //   e.preventDefault();
