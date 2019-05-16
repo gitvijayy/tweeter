@@ -1,5 +1,6 @@
 $(document).ready(function () {
   // --- our code goes here ---
+
   $(".new-tweet textarea.char").keyup(function () {
 
     const totalChars = $(this).val().length;
@@ -16,8 +17,8 @@ $(document).ready(function () {
   });
 
 
-  $(document).on("click", "#retweet", function(){
-console.log($(this).siblings("h3").text())
+  $(document).on("click", "#retweet", function () {
+    console.log($(this).siblings("h3").text())
   })
 
   // $(`.flag`).click(function(e) {

@@ -1,12 +1,12 @@
 #nav-bar {
-  background-color: #17a2b8;
+  background-color: #ffc107;
   height: 80px;
   width: 100%;
   color: #e8fdff;
   padding-left: 2em;
   padding-right: 2em;
   position: fixed;
-  z-index: 2;
+  z-index: 2; 
 }
 
 #nav-bar .logo {
@@ -19,19 +19,31 @@
 #nav-bar .header {
   line-height: 80px;
   font-size: 2em;
+  
   float: left;
 }
 
-
+/* #nav-bar .compose-icon {
+  position: relative;
+  margin-left: 75%
+} */
 #nav-bar .button {
   float: right;
   margin-top: 1em;
-  height: 40px;
-  width: 100px;
+  height: 46px;
+  width: 120px;
+ 
+  /* background: url(https://image.flaticon.com/icons/svg/69/69480.svg) no-repeat scroll 1% 1%; */
+  background-image:url(https://image.flaticon.com/icons/svg/185/185961.svg);
+  background-repeat: no-repeat; 
+background-position: 4px 5px;
+background-size: 27%;
+  text-indent:30px;
+  /* padding-left:30px; */
 }
 
 #nav-bar .not-clicked {
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 #nav-bar .not-clicked:hover {
