@@ -12,7 +12,7 @@
 
 $(document).ready(() => {
 
-
+  
   const createTweetElement = (tweet) => {
 
     let tweetPost = $('<article>');
@@ -49,15 +49,21 @@ $(document).ready(() => {
   $button.on('submit', function (event) {
 
     event.preventDefault();
-    $(".new-tweet h5").remove();
+    //$(".new-tweet h5").remove();
+    
     const error = $('.char').val();
     if ( error === "") {
-      $(".new-tweet").append('<h5>')
-      $(".new-tweet h5").text("Invalid tweet").css({"margin": "0", "color": "red", "text-align": "center"})
+      //$(".new-tweet").append('<h5>')
+      $(".error").slideDown();
+      $(".error").text("Invalid tweet");
+      //$(".new-tweet h5").text("Invalid tweet").css({"margin": "0", "color": "red", "text-align": "center"})
     } else if (error.length>140) {
-      $(".new-tweet").append('<h5>')
-      $(".new-tweet h5").text("Tweet too long").css({"margin": "0", "color": "red", "text-align": "center"})
+      $(".error").slideDown();
+      $(".error").text("Tweet too long");
+      //$(".new-tweet").append('<h5>')
+      //$(".new-tweet h5").text("Tweet too long").css({"margin": "0", "color": "red", "text-align": "center"})
     } else {
+      $(".error").slideUp();
  
 $.post("/tweets", $(this).serialize())
 $(this).trigger("reset");
