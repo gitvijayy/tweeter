@@ -47,21 +47,28 @@ $(document).ready(() => {
   const $button = $('#load-tweets');
 
   $button.on('submit', function (event) {
+
     event.preventDefault();
-    $.post("/tweets", $(this).serialize())
-    $(this).trigger("reset");
-    
-    //$('#load-tweets .char').reset();
-   // $(this).siblings('<input>').val("ab")
-    getTweets()
-    //();
-    //getTweets();
-    //location.reload(true);
-    getTweets();
+    $(".new-tweet h5").remove();
+    const error = $('.char').val();
+    if ( error === "") {
+      $(".new-tweet").append('<h5>')
+      $(".new-tweet h5").text("Invalid tweet").css({"margin": "0", "color": "red", "text-align": "center"})
+    } else if (error.length>140) {
+      $(".new-tweet").append('<h5>')
+      $(".new-tweet h5").text("Tweet too long").css({"margin": "0", "color": "red", "text-align": "center"})
+    } else {
+ 
+$.post("/tweets", $(this).serialize())
+$(this).trigger("reset");
+
+getTweets()   
+getTweets();
+    }
+   
   });
 
   getTweets()
-  //getTweets();
   getTweets();
 
 });
