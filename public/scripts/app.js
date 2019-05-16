@@ -1,18 +1,18 @@
 /*
  * Client-side JS logic goes here
  * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
+ * Reminder: Use (and do all your DOM work in) jQuery`s document ready function
  */
 /*
  * Client-side JS logic goes here
  * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
+ * Reminder: Use (and do all your DOM work in) jQuery`s document ready function
  */
 $(document).ready(() => {
 
   const createTweetElement = (tweet) => {
-    let tweetPost = $('<article>');
-    tweetPost.append($(`<img src = ${tweet.user.avatars["small"]}>`));
+    let tweetPost = $(`<article>`);
+    tweetPost.append($(`<img src = ${tweet.user.avatars[`small`]}>`));
     tweetPost.append($(`<h2>`).text(tweet.user.name))
     tweetPost.append($(`<h3>`).text(tweet.user.handle))
     tweetPost.append($(`<p>`).text(tweet.content.text))
@@ -22,48 +22,48 @@ $(document).ready(() => {
 
   const renderTweets = (tweets) => {
     tweets = tweets.sort((a, b) => b.created_at - a.created_at);
-    $('.tweets-container').empty();
+    $(`.tweets-container`).empty();
     tweets.forEach((tweetData) => {
       let $tweet = createTweetElement(tweetData);
-      $('.tweets-container').append($tweet);
+      $(`.tweets-container`).append($tweet);
     });
   };
 
   const getTweets = () => {
-    $.ajax('http://localhost:8080/tweets', { method: 'GET' })
+    $.ajax(`http://localhost:8080/tweets`, { method: `GET` })
       .then(function (tweetData) {
         renderTweets(tweetData);
       });
   }
 
-  const $button = $('#load-tweets');
-  $button.on('submit', function (event) {
+  const $button = $(`#load-tweets`);
+  $button.on(`submit`, function (event) {
     event.preventDefault();
-    const error = $('.char').val();
-    if (error === "") {
-      $(".error").slideDown();
-      $(".error").text("Invalid tweet");
+    const error = $(`.char`).val();
+    if (error === ``) {
+      $(`.error`).slideDown();
+      $(`.error`).text(`Invalid tweet`);
     } else if (error.length > 140) {
-      $(".error").slideDown();
-      $(".error").text("Tweet too long");
+      $(`.error`).slideDown();
+      $(`.error`).text(`Tweet too long`);
     } else {
-      $(".error").slideUp();
-      $.post("/tweets", $(this).serialize())
-      $(this).trigger("reset");
+      $(`.error`).slideUp();
+      $.post(`/tweets`, $(this).serialize())
+      $(this).trigger(`reset`);
       getTweets()
       getTweets();
     }
   });
 
-  const $button1 = $('#nav-bar input');
-  $button1.on('click', function () {
-    let $newTweet = $(".new-tweet");
-    if ($newTweet.css("display") === "none") {
+  const $button1 = $(`#nav-bar input`);
+  $button1.on(`click`, function () {
+    let $newTweet = $(`.new-tweet`);
+    if ($newTweet.css(`display`) === `none`) {
       $newTweet.slideDown();
-      $(this).removeClass('not-clicked').addClass('clicked')
+      $(this).removeClass(`not-clicked`).addClass(`clicked`)
     } else {
       $newTweet.slideUp();
-      $(this).removeClass('clicked').addClass('not-clicked')
+      $(this).removeClass(`clicked`).addClass(`not-clicked`)
     }
     $newTweet.focus();
   })
