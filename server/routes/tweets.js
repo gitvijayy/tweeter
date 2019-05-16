@@ -40,7 +40,7 @@ module.exports = function(DataHelpers) {
       }
     });
   });
-
+//console.log(`tweets.js datahelper argument comes in`,tweetsRoutes);
   return tweetsRoutes;
 
 }
