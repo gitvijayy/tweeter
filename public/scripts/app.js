@@ -12,11 +12,18 @@ $(document).ready(() => {
 
   const createTweetElement = (tweet) => {
     let tweetPost = $(`<article>`);
-    tweetPost.append($(`<img src = ${tweet.user.avatars[`small`]}>`));
-    tweetPost.append($(`<h2>`).text(tweet.user.name))
-    tweetPost.append($(`<h3>`).text(tweet.user.handle))
-    tweetPost.append($(`<p>`).text(tweet.content.text))
-    tweetPost.append($(`<footer>`).text(convertMS(Date.now() - tweet.created_at)))
+    tweetPost.append($(`<img src = ${tweet.user.avatars[`small`]}>`))
+      
+      .append($(`<h2>`).text(tweet.user.name))
+      .append($(`<h3>`).text(tweet.user.handle))
+      .append($(`<p>`).text(tweet.content.text))
+      .append($(`<footer class = "timerIcon">`).text(`${convertMS(Date.now() - tweet.created_at)}`))
+      .append($(`<a id = "flag" href="" >`).text(`🚩`))
+      .append($(`<a id = "retweet" href="" >`).text(`🔃`))
+      .append($(`<a id = "like" href="">`).text(`👍`))
+  
+
+
     return tweetPost;
   }
 
@@ -48,16 +55,16 @@ $(document).ready(() => {
       $(`.error`).text(`Tweet too long`);
     } else {
       $(`.error`).slideUp();
-      $.post(`/tweets`, $(this).serialize())
+      $.post(`/tweets`, $(this).serialize(), () => getTweets())
       $(this).trigger(`reset`);
-      getTweets()
-      getTweets();
+      $(`.counter`).text("140");
     }
   });
 
   const $button1 = $(`#nav-bar input`);
   $button1.on(`click`, function () {
     let $newTweet = $(`.new-tweet`);
+
     if ($newTweet.css(`display`) === `none`) {
       $newTweet.slideDown();
       $(this).removeClass(`not-clicked`).addClass(`clicked`)
@@ -65,11 +72,22 @@ $(document).ready(() => {
       $newTweet.slideUp();
       $(this).removeClass(`clicked`).addClass(`not-clicked`)
     }
-    $newTweet.focus();
+    $(`#load-tweets .char`).focus();
   })
-  getTweets()
+
   getTweets();
+
+  $(".tweets-container #retweet").click(function(e) {
+    e.preventDefault();
+    alert('clicked');  
+    //return false;  
+  });  
+
 });
+
+function anchorScr(){
+  console.log("ab");
+}
 
 const convertMS = (milliseconds) => {
   var days, hrs, mins, secs, year;
@@ -94,3 +112,4 @@ const convertMS = (milliseconds) => {
     return `${secs} sec ago`;
   }
 }
+

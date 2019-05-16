@@ -14,4 +14,18 @@ $(document).ready(function () {
     }
 
   });
+
+  $('a').click(function (event) {
+    // var id = $(this).attr("id");
+    // alert(id);
+
+    console.log("ad")
+});
+
+
+  // $(`.flag`).click(function(e) {
+  //   e.preventDefault();
+  //       //Do stuff when clicked
+  //       console.log("ad")
+  //   });
 });
