@@ -6,7 +6,7 @@
   padding-left: 2em;
   padding-right: 2em;
   position: fixed;
-  z-index: 2; 
+  z-index: 2;
 }
 
 #nav-bar .logo {
@@ -19,7 +19,6 @@
 #nav-bar .header {
   line-height: 80px;
   font-size: 2em;
-  
   float: left;
 }
 
@@ -27,18 +26,18 @@
   position: relative;
   margin-left: 75%
 } */
+
 #nav-bar .button {
   float: right;
   margin-top: 1em;
   height: 46px;
   width: 120px;
- 
   /* background: url(https://image.flaticon.com/icons/svg/69/69480.svg) no-repeat scroll 1% 1%; */
-  background-image:url(https://image.flaticon.com/icons/svg/185/185961.svg);
-  background-repeat: no-repeat; 
-background-position: 4px 5px;
-background-size: 27%;
-  text-indent:30px;
+  background-image: url(https://image.flaticon.com/icons/svg/185/185961.svg);
+  background-repeat: no-repeat;
+  background-position: 4px 5px;
+  background-size: 27%;
+  text-indent: 30px;
   /* padding-left:30px; */
 }
 
@@ -51,7 +50,7 @@ background-size: 27%;
   border: 1.5px solid #343a40;
 }
 
-#nav-bar .clicked { 
+#nav-bar .clicked {
   opacity: 1;
   border: 1.5px solid #343a40;
 }
