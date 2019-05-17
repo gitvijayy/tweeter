@@ -11,17 +11,24 @@
 $(document).ready(() => {
 
   const createTweetElement = (tweet) => {
-    let tweetPost = $(`<article>`);
-    tweetPost
+
+    let header = $(`<header>`)
       .append($(`<img src = ${tweet.user.avatars[`small`]}>`))
       .append($(`<h2>`).text(tweet.user.name))
       .append($(`<h3>`).text(tweet.user.handle))
-      .append($(`<p>`).text(tweet.content.text))
-      .append($(`<footer>`).text(`${convertMS(Date.now() - tweet.created_at)}`))
-      .append($(`<button type = "submit" id = "flag" >`).text(`🚩`))
-      .append($(`<button type = "submit" id = "retweet" >`).text(`🔃`))
-      .append($(`<button type = "submit" id = "like">`).text(`👍`))
-    return tweetPost;
+    let content = $(`<p>`).text(tweet.content.text)
+
+    let likeCounter = $(`<i class = "like-count">`).text(tweet.likes)
+
+    let footer = $(`<footer>`)
+      .append($(`<h5>`).text(`${convertMS(Date.now() - tweet.created_at)}`))
+      .append(likeCounter)
+      .append($(`<i class = "like">`).text(`👍`))
+      .append($(`<i class = "retweet" >`).text(`🔃`))
+      .append($(`<i class = "flag">`).text(`🚩`))
+
+    return $(`<article id = ${tweet._id}>`).append(header, content, footer);
+
   }
 
   const renderTweets = (tweets) => {
@@ -36,6 +43,7 @@ $(document).ready(() => {
   const getTweets = () => {
     $.ajax(`http://localhost:8080/tweets`, { method: `GET` })
       .then(function (tweetData) {
+        console.log("ajax query")
         renderTweets(tweetData);
       });
   }
@@ -44,9 +52,10 @@ $(document).ready(() => {
   const $tweetButton = $(`#load-tweets`);
   $tweetButton.on(`submit`, function (event) {
     event.preventDefault();
-    const error = $(`.char`).val();
+    const error = ($(`.char`).val()).trim();
     if (error === ``) {
       $(`.error`).slideDown();
+      $(`.char`).val("");
       $(`.error`).text(`Invalid tweet`);
     } else if (error.length > 140) {
       $(`.error`).slideDown();
@@ -65,12 +74,11 @@ $(document).ready(() => {
           $(`.error`).text(`404: Try Again!`)
         }
       });
-
       $(this).trigger(`reset`);
       $(`.counter`).text("140");
     }
   });
-
+  
   //toggles the new tweet section and gives it focus
   const $composeButton = $(`#nav-bar input`);
   $composeButton.on(`click`, function () {
@@ -82,9 +90,9 @@ $(document).ready(() => {
       $newTweet.slideUp();
       $(this).removeClass(`clicked`).addClass(`not-clicked`)
     }
+    $(`.error`).slideUp();
     $(`#load-tweets .char`).focus();
   })
-
   getTweets();
 });
 
@@ -113,7 +121,26 @@ const convertMS = (milliseconds) => {
   }
 }
 
-//TO DO Stretch - likes 
-// $(document).on("click", "#retweet", function () {
-//   console.log($(this).siblings("h3").text())
-// })
+//To-do Code for stretch work
+// $(document).on("mouseover", ".tweets-container article" ,function(){
+//   if($(".like-count").text() == 0) {
+//     $(".like-count").css("visibility","hidden")
+//   }else {
+//     $(".like-count").css("visibility","visible")
+//   }
+// });
+
+$(document).on("click", ".like", function () {
+  let _id = $(this).parent().parent().attr('id')
+  console.log(_id)
+  let count = $(this).siblings(".like-count").text()
+  if (count == 0) {
+    count++
+    $(this).siblings(".like-count").text(count)
+  } else {
+    count--
+    $(this).siblings(".like-count").text(count)
+
+  }
+  $.ajax(`/tweets/${_id}/${count}`, { method: `POST` })
+});

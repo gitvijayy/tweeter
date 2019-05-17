@@ -1,35 +1,46 @@
 "use strict";
 
-const userHelper    = require("../lib/util/user-helper")
+const userHelper = require("../lib/util/user-helper")
 
-const express       = require('express');
-const tweetsRoutes  = express.Router();
+const express = require('express');
+const tweetsRoutes = express.Router();
 
-module.exports = function(DataHelpers) {
+module.exports = function (DataHelpers) {
 
-  tweetsRoutes.get("/", function(req, res) {
+  tweetsRoutes.get("/", function (req, res) {
     DataHelpers.getTweets((err, tweets) => {
       if (err) {
         res.status(500).json({ error: err.message });
       } else {
+        console.log("tweets.js")
         res.json(tweets);
       }
     });
   });
 
-  tweetsRoutes.post("/", function(req, res) {
+  tweetsRoutes.post("/:id/:count", function (req, res) {
+    console.log(req.params)
+   DataHelpers.likeTweets( req.params.id,req.params.count)
+  
+     });
+  
+
+
+  tweetsRoutes.post("/", function (req, res) {
     if (!req.body.text) {
-      res.status(400).json({ error: 'invalid request: no data in POST body'});
+      res.status(400).json({ error: 'invalid request: no data in POST body' });
       return;
     }
 
     const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
     const tweet = {
+
       user: user,
       content: {
         text: req.body.text
       },
-      created_at: Date.now()
+      created_at: Date.now(),
+      likes: 0
     };
 
     DataHelpers.saveTweet(tweet, (err) => {
@@ -40,7 +51,7 @@ module.exports = function(DataHelpers) {
       }
     });
   });
-//console.log(`tweets.js datahelper argument comes in`,tweetsRoutes);
+
   return tweetsRoutes;
 
 }

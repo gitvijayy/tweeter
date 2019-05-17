@@ -1,38 +1,40 @@
 .tweets-container article {
-  opacity: 0.7;
-  background-color: #343a40;
+  background-color: #5f666b;
   margin: 2em;
   border-radius: 9px;
-  border: 0.5px solid #343a40;
+  border: 0.4px solid black;
   height: 181px;
-  width: 386px;
 }
 
 .tweets-container article:hover {
-  opacity: 1;
+  background-color: #343a40;
+}
+
+.tweets-container header {
+  height: 52px;
 }
 
 .tweets-container img {
-  margin-top: 5px;
-  width: 50px;
-  height: 50px;
   border-radius: 9px;
   float: left;
   margin-left: 0.5em;
+  position: relative;
+  bottom: 5px;
 }
 
 .tweets-container h2 {
+  margin-top: 0px;
+  width: 180px;
+  position: relative;
+  bottom: 3px;
   margin-left: 0.2em;
   float: left;
-  margin-top: 4px;
-  font-size: 1.4em
+  font-size: 1.3em;
 }
 
 .tweets-container h3 {
-  height: 40px;
-  margin-bottom: 0px;
   margin-top: 10px;
-  padding-top: 3px;
+  padding-top: 8px;
   text-align: right;
   font-size: initial;
   width: 150px;
@@ -40,60 +42,36 @@
 }
 
 .tweets-container p {
+  margin-top: 0px;
+  padding: 20px;
   word-break: break-all;
-  padding: 15px;
-  margin-top: 12px;
   height: 84px;
   background-color: #f8f9fa;
   margin-bottom: 0px;
   color: #343a40;
 }
 
-.tweets-container footer {
-  height: 35px;
+.tweets-container h5 {
+  margin-top: 10px;
   padding-left: 0.5em;
-  padding-top: 0.5em;
+  font-weight: bolder;
+  font-style: italic;
 }
 
-.tweets-container button {
+.tweets-container i {
   visibility: hidden;
-  font-style: italic
+  font-style: italic;
+  float: right;
+  padding: 1.5%;
+  position: relative;
+  bottom: 2.8em;
+  font-weight: bold;
 }
 
-.tweets-container button:hover {
+.tweets-container i:hover {
   cursor: pointer;
 }
 
-.tweets-container article:hover button {
+.tweets-container article:hover i {
   visibility: visible;
-}
-
-#flag {
-  margin-left: 80%;
-  position: relative;
-  bottom: 29px;
-  padding: 0;
-  width: 0px;
-  height: 0px;
-  border: 0;
-}
-
-#retweet {
-  margin-left: 86%;
-  position: relative;
-  bottom: 48px;
-  padding: 0;
-  width: 0px;
-  height: 0px;
-  border: 0;
-}
-
-#like {
-  margin-left: 93%;
-  position: relative;
-  bottom: 67px;
-  padding: 0;
-  width: 0px;
-  height: 0px;
-  border: 0;
 }
