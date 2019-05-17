@@ -17,13 +17,10 @@ $(document).ready(() => {
       .append($(`<h2>`).text(tweet.user.name))
       .append($(`<h3>`).text(tweet.user.handle))
       .append($(`<p>`).text(tweet.content.text))
-      .append($(`<footer class = "timerIcon">`).text(`${convertMS(Date.now() - tweet.created_at)}`))
+      .append($(`<footer>`).text(`${convertMS(Date.now() - tweet.created_at)}`))
       .append($(`<button type = "submit" id = "flag" >`).text(`🚩`))
       .append($(`<button type = "submit" id = "retweet" >`).text(`🔃`))
       .append($(`<button type = "submit" id = "like">`).text(`👍`))
-
-
-
     return tweetPost;
   }
 
@@ -43,8 +40,9 @@ $(document).ready(() => {
       });
   }
 
-  const $button = $(`#load-tweets`);
-  $button.on(`submit`, function (event) {
+  //on click of tweet button if valid creates a new tweet
+  const $tweetButton = $(`#load-tweets`);
+  $tweetButton.on(`submit`, function (event) {
     event.preventDefault();
     const error = $(`.char`).val();
     if (error === ``) {
@@ -54,17 +52,29 @@ $(document).ready(() => {
       $(`.error`).slideDown();
       $(`.error`).text(`Tweet too long`);
     } else {
-      $(`.error`).slideUp();
-      $.post(`/tweets`, $(this).serialize(), () => getTweets())
+      $.ajax({
+        type: 'POST',
+        url: `/tweets`,
+        data: $(this).serialize(),
+        success: () => {
+          $(`.error`).slideUp();
+          getTweets();
+        },
+        error: () => {
+          $(`.error`).slideDown();
+          $(`.error`).text(`404: Try Again!`)
+        }
+      });
+
       $(this).trigger(`reset`);
       $(`.counter`).text("140");
     }
   });
 
-  const $button1 = $(`#nav-bar input`);
-  $button1.on(`click`, function () {
+  //toggles the new tweet section and gives it focus
+  const $composeButton = $(`#nav-bar input`);
+  $composeButton.on(`click`, function () {
     let $newTweet = $(`.new-tweet`);
-
     if ($newTweet.css(`display`) === `none`) {
       $newTweet.slideDown();
       $(this).removeClass(`not-clicked`).addClass(`clicked`)
@@ -76,14 +86,9 @@ $(document).ready(() => {
   })
 
   getTweets();
-
-
 });
 
-function anchorScr() {
-  console.log("ab");
-}
-
+//to calculate the date in days years etc.. 
 const convertMS = (milliseconds) => {
   var days, hrs, mins, secs, year;
   secs = Math.floor(milliseconds / 1000);
@@ -108,3 +113,7 @@ const convertMS = (milliseconds) => {
   }
 }
 
+//TO DO Stretch - likes 
+// $(document).on("click", "#retweet", function () {
+//   console.log($(this).siblings("h3").text())
+// })

@@ -12,8 +12,6 @@
   opacity: 1;
 }
 
-
-
 .tweets-container img {
   margin-top: 5px;
   width: 50px;
@@ -42,6 +40,7 @@
 }
 
 .tweets-container p {
+  word-break: break-all;
   padding: 15px;
   margin-top: 12px;
   height: 84px;
@@ -56,50 +55,45 @@
   padding-top: 0.5em;
 }
 
-
-.tweets-container  button {
+.tweets-container button {
   visibility: hidden;
   font-style: italic
 }
-.tweets-container  button:hover {
+
+.tweets-container button:hover {
   cursor: pointer;
 }
 
-.tweets-container article:hover  button {
+.tweets-container article:hover button {
   visibility: visible;
 }
 
- #flag {
-  /* visibility: hidden; */
+#flag {
   margin-left: 80%;
   position: relative;
   bottom: 29px;
   padding: 0;
-    width: 0px;
-    height: 0px;
-    border: 0;
+  width: 0px;
+  height: 0px;
+  border: 0;
 }
+
 #retweet {
-  /* visibility: hidden; */
   margin-left: 86%;
   position: relative;
   bottom: 48px;
   padding: 0;
-    width: 0px;
-    height: 0px;
-    border: 0;
+  width: 0px;
+  height: 0px;
+  border: 0;
 }
+
 #like {
-  /* visibility: hidden; */
   margin-left: 93%;
   position: relative;
   bottom: 67px;
-  /* text-decoration: none; */
   padding: 0;
-    width: 0px;
-    height: 0px;
-    border: 0;
-
+  width: 0px;
+  height: 0px;
+  border: 0;
 }
-
-

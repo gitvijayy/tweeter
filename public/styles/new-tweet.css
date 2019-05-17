@@ -1,31 +1,30 @@
 .new-tweet {
   display: none;
   background-color: #343a40;
-  margin: 2em; 
-  border-radius: 7px;    
+  margin: 2em;
+  border-radius: 7px;
   padding: 0.2em
-  
- }
+}
 
- .new-tweet form {
+.new-tweet form {
   padding: 0.5em;
- }
+}
 
- .new-tweet textarea {
+.new-tweet textarea {
   width: 100%;
   padding-left: 0.3em;
- }
+}
 
- .new-tweet .counter {
+.new-tweet .counter {
   margin-left: 78%;
   font-style: italic;
-  font-size: small; 
-  color:#f8f9fa 
- }
+  font-size: small;
+  color: #f8f9fa
+}
 
- .new-tweet h2 {
+.new-tweet h2 {
   margin: 0.3em;
   padding-top: 0.3em;
   box-sizing: border-box;
   border-bottom: 1.5px solid #f8f9fa;
- }
+}
