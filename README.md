@@ -17,7 +17,7 @@ Tweeter is a simple, single-page Twitter clone.
 - jQuery
 - AJAX
 
-## Back END
+## Back End
 
 - Node
 - Express
