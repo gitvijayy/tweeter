@@ -27,4 +27,8 @@ Tweeter is a simple, single-page Twitter clone.
 
 ## Final Product
 
+!["Compose"](https://github.com/gitvijayy/tweeter/blob/master/docs/compose.png?raw=true)
 
+!["Tweets"](https://github.com/gitvijayy/tweeter/blob/master/docs/tweets.png?raw=true)
+
+!["Error"](https://github.com/gitvijayy/tweeter/blob/master/docs/error.png?raw=true)
