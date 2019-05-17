@@ -11,15 +11,13 @@ module.exports = function (DataHelpers) {
     DataHelpers.getTweets((err, tweets) => {
       if (err) {
         res.status(500).json({ error: err.message });
-      } else {
-        console.log("tweets.js")
+      } else {       
         res.json(tweets);
       }
     });
   });
 
   tweetsRoutes.post("/:id/:count", function (req, res) {
-    console.log(req.params)
     DataHelpers.likeTweets(req.params.id, req.params.count)
   });
 
