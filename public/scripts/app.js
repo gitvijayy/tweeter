@@ -12,8 +12,8 @@ $(document).ready(() => {
 
   const createTweetElement = (tweet) => {
     let tweetPost = $(`<article>`);
-    tweetPost.append($(`<img src = ${tweet.user.avatars[`small`]}>`))
-      
+    tweetPost
+      .append($(`<img src = ${tweet.user.avatars[`small`]}>`))
       .append($(`<h2>`).text(tweet.user.name))
       .append($(`<h3>`).text(tweet.user.handle))
       .append($(`<p>`).text(tweet.content.text))
@@ -21,7 +21,7 @@ $(document).ready(() => {
       .append($(`<button type = "submit" id = "flag" >`).text(`🚩`))
       .append($(`<button type = "submit" id = "retweet" >`).text(`🔃`))
       .append($(`<button type = "submit" id = "like">`).text(`👍`))
-  
+
 
 
     return tweetPost;
@@ -77,13 +77,10 @@ $(document).ready(() => {
 
   getTweets();
 
-   
-
-  
 
 });
 
-function anchorScr(){
+function anchorScr() {
   console.log("ab");
 }
 
