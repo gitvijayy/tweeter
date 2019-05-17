@@ -20,11 +20,8 @@ module.exports = function (DataHelpers) {
 
   tweetsRoutes.post("/:id/:count", function (req, res) {
     console.log(req.params)
-   DataHelpers.likeTweets( req.params.id,req.params.count)
-  
-     });
-  
-
+    DataHelpers.likeTweets(req.params.id, req.params.count)
+  });
 
   tweetsRoutes.post("/", function (req, res) {
     if (!req.body.text) {
@@ -34,7 +31,6 @@ module.exports = function (DataHelpers) {
 
     const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
     const tweet = {
-
       user: user,
       content: {
         text: req.body.text

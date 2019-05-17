@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  
+
   <!-- Meta Information -->
   <title>Tweeter - Home Page</title>
 
@@ -27,40 +27,46 @@
   <!-- Charcounter JS -->
   <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
 
+  <!-- like JS -->
+  <script type="text/javascript" src="/scripts/like-counter.js"></script>
+
+  <!-- New Tweet section toggle JS -->
+  <script type="text/javascript" src="/scripts/new-tweet-toggle.js"></script>
+
 </head>
 
 <body>
 
   <!-- Top nav bar (fixed) -->
   <div>
-  <nav id="nav-bar">
-    <img class="logo" src="/images/bird.png">
-    <span class="header">Tweeter</span>
-    
-    <input class = "button not-clicked" type="submit" value="Compose">
-  </nav>
-</div>
+    <nav id="nav-bar">
+      <img class="logo" src="/images/bird.png">
+      <span class="header">Tweeter</span>
+
+      <input class="button not-clicked" type="submit" value="Compose">
+    </nav>
+  </div>
   <!-- Page-specific (main) content here -->
   <div>
-  <main class="container">
+    <main class="container">
 
-    <section class="new-tweet">
+      <section class="new-tweet">
 
-      <h2>Compose Tweet</h2>
-      <form id = "load-tweets" action="/tweets" method="POST">
-        <textarea class="char" name="text" placeholder="What are you humming about?"></textarea>
-        <input type="submit" value="Tweet">
-        <span class="counter">140</span>
-      </form>
-      <h3 class = error></h3>
-    </section>
-    
-    <section class="tweets-container">
-       
-    </section>
+        <h2>Compose Tweet</h2>
+        <form id="load-tweets" action="/tweets" method="POST">
+          <textarea class="char" name="text" placeholder="What are you humming about?"></textarea>
+          <input type="submit" value="Tweet">
+          <span class="counter">140</span>
+        </form>
+        <h3 class=error></h3>
+      </section>
 
-  </main>
-</div>
+      <section class="tweets-container">
+
+      </section>
+
+    </main>
+  </div>
 </body>
 
 </html>
