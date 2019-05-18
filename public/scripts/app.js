@@ -43,11 +43,10 @@ $(document).ready(() => {
       .append($(`<h3>`).text(tweet.user.handle))
 
     let content = $(`<p>`).text(tweet.content.text)
-    let likeCounter = $(`<i class = "like-count">`).text(tweet.likes)
-
+     
     let footer = $(`<footer>`)
       .append($(`<h5>`).text(`${convertMS(Date.now() - tweet.created_at)}`))
-      .append(likeCounter)
+      .append($(`<i class = "like-count">`).text(tweet.likes))
       .append($(`<i class = "like">`).text(`👍`))
       .append($(`<i class = "retweet" >`).text(`🔃`))
       .append($(`<i class = "flag">`).text(`🚩`))
