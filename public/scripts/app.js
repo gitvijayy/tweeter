@@ -42,7 +42,7 @@ $(document).ready(() => {
       .append($(`<i class = "flag">`).text(`🚩`))
 
     let container = $(`<article>`);
-    $(container).data("id",tweet._id)
+    $(container).data(`id`,tweet._id)
     return container.append(header, content, footer);
 
   }
@@ -61,7 +61,7 @@ $(document).ready(() => {
   const getTweets = () => {
 
     $.ajax({
-      type: 'GET',
+      type: `GET`,
       url: `/tweets`,
       success: (tweetData) => {
         $(`.error`).slideUp();
@@ -85,14 +85,14 @@ $(document).ready(() => {
 
     if (error === ``) {
       $(`.error`).slideDown();
-      $(`.char`).val("");
+      $(`.char`).val(``);
       $(`.error`).text(`Invalid tweet`);
     } else if (error.length > 140) {
       $(`.error`).slideDown();
       $(`.error`).text(`Tweet too long`);
     } else {
       $.ajax({
-        type: 'POST',
+        type: `POST`,
         url: `/tweets`,
         data: $(this).serialize(),
         success: () => {
@@ -106,7 +106,7 @@ $(document).ready(() => {
       });
 
       $(this).trigger(`reset`);
-      $(`.counter`).text("140");
+      $(`.counter`).text(`140`);
 
     }
   });
