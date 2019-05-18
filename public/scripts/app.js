@@ -52,7 +52,9 @@ $(document).ready(() => {
       .append($(`<i class = "retweet" >`).text(`🔃`))
       .append($(`<i class = "flag">`).text(`🚩`))
 
-    return $(`<article id = ${tweet._id}>`).append(header, content, footer);
+    let container = $(`<article>`);
+    $(container).data("id",tweet._id)
+    return container.append(header, content, footer);
 
   }
 
