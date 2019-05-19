@@ -1,3 +1,9 @@
 node_modules/
 .env
 .DS_Store
+public/styles/layout.css
+public/styles/nav.css
+public/styles/new-tweet.css
+public/styles/tweets.css
+public/styles/original.css
+
