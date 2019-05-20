@@ -6,7 +6,7 @@ const express = require(`express`);
 const bodyParser = require(`body-parser`);
 const app = express();
 const MongoClient = require(`mongodb`).MongoClient;
-const MONGODB_URI = "mongodb://heroku_1z3jsnrc:fka36mot8qft09pjd9gppd0j2r@ds151076.mlab.com:51076/heroku_1z3jsnrc";
+const MONGODB_URI = process.env.MONGODB_URI;
 //mongodb://heroku_1z3jsnrc:fka36mot8qft09pjd9gppd0j2r@ds151076.mlab.com:51076/heroku_1z3jsnrc
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -30,6 +30,6 @@ MongoClient.connect(MONGODB_URI, (err, db) => {
   
 });
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || 8080, () => {
   console.log(`Example app listening on port ` + PORT);
 });
