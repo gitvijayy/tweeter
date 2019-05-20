@@ -114,13 +114,8 @@ $(document).ready(() => {
     }
   });
 
-  //renders all the tweets on page load or refresh
- 
-  //document.cookie="abc";
+
   getTweets();
 
 });
 
-// if(document.cookie = "abc") {
-//   $(`#nav-bar input`).val("login");
-// }

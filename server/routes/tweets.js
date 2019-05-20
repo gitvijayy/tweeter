@@ -79,7 +79,7 @@ module.exports = function (DataHelpers) {
         res.status(409).send()
       } else {
         
-        res.status(201).send(user.email);
+        res.status(201).send();
       }
     });
     

@@ -48,8 +48,18 @@ body {
     font-weight: bolder;
     font-size: 2em;
   }
+  .logout {
+    flex: 1;
+    margin-top: ‒25;
+    margin-top: 23px;
+    margin-left: 10px;
+    color: red;
+    font-style: italic;
+    font-weight: bolder;
+    font-size: large;
+  }
   h2 {
-    flex: 1.3;
+    
     color: black;
   }
 
@@ -87,6 +97,7 @@ body {
   margin: 2em;
   border-radius: 7px;
   padding: 0.2em;
+  display: none;
 
   
 
