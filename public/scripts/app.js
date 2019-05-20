@@ -1,3 +1,4 @@
+
 $(document).ready(() => {
 
   //to calculate the date in days years etc.. source:StackOverFlow
@@ -63,9 +64,11 @@ $(document).ready(() => {
     $.ajax({
       type: `GET`,
       url: `/tweets`,
-      success: (tweetData) => {
+      success: (tweetData,ab) => {
         $(`.error`).slideUp();
         renderTweets(tweetData);
+        // console.log(ab)
+        // console.log(ab)
       },
       error: () => {
         $(`.error`).slideDown();
@@ -112,7 +115,12 @@ $(document).ready(() => {
   });
 
   //renders all the tweets on page load or refresh
+ 
+  //document.cookie="abc";
   getTweets();
 
 });
 
+// if(document.cookie = "abc") {
+//   $(`#nav-bar input`).val("login");
+// }

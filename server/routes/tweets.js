@@ -5,10 +5,14 @@ const userHelper = require(`../lib/util/user-helper`)
 const express = require(`express`);
 const tweetsRoutes = express.Router();
 
+
+
+
 module.exports = function (DataHelpers) {
 
   tweetsRoutes.get(`/`, function (req, res) {
     DataHelpers.getTweets((err, tweets) => {
+
       if (err) {
         res.status(500).json({ error: err.message });
       } else {       
@@ -46,6 +50,43 @@ module.exports = function (DataHelpers) {
     });
   });
 
+  tweetsRoutes.post(`/register`, function (req, res) {
+    const user = {
+      email: req.body.email,
+      password: req.body.password,
+
+
+    }
+    DataHelpers.addUser(user, (err) => {
+      if (err) {
+        res.status(409).send()
+      } else {
+        res.status(201).send();
+      }
+    });
+  });
+
+  tweetsRoutes.post(`/login`, function (req, res) {
+    const user = {
+      email: req.body.email,
+      password: req.body.password,
+
+
+    }
+    
+    DataHelpers.checkUser(user, (err) => {
+      if (err) {
+        res.status(409).send()
+      } else {
+        
+        res.status(201).send(user.email);
+      }
+    });
+    
+  });
+
   return tweetsRoutes;
 
 }
+
+//req.session.user_id ? res.redirect(`/urls`) : res.redirect(`/login`)

@@ -14,6 +14,7 @@
 
   <!--internal css files-->
   <link rel="stylesheet" href="/styles/flexbox.css" type="text/css" /> 
+  
   <!-- External JS -->
   <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
 
@@ -28,23 +29,39 @@
 
   <!-- New Tweet section toggle JS -->
   <script type="text/javascript" src="/scripts/new-tweet-toggle.js"></script>
+   <!-- New Tweet section toggle JS -->
+   <script type="text/javascript" src="/scripts/login-register.js"></script>
 
 </head>
 
 <body>
-
   <!-- Top nav bar (fixed) -->
   <div class = "div-1">
     <nav id="nav-bar">
       <img class="logo" src="/images/bird.png">
-      <span class="header">Tweeter-User Registration</span>
+      <span class="header">Tweeter-</span>
+      <h2 class="login-status">Logged in as abc@ab.com</h2>
 
       <input class="button not-clicked" type="submit" value="Compose">
+     
+
     </nav>
   </div>
   <!-- Page-specific (main) content here -->
   <div class = "div-2">
     <main class="container">
+
+        <section class="login-register">
+            <h3 class="registration-error"></h3>
+            
+            <form>
+                <h4>Email</h4> <input type="email" class = "user email" >
+                <h4>Password</h4> <input  class = "user password" type="Password">
+              <input  class = "login-register-button" type="submit" value="Login">
+              <a href="" >Click here to Register</a>
+            </form>
+            
+          </section>
 
       <section class="new-tweet">
 
@@ -54,7 +71,7 @@
           <input type="submit" value="Tweet">
           <span class="counter">140</span>
         </form>
-        <h3 class=error></h3>
+        <h3 class="error"></h3>
       </section>
 
       <section class="tweets-container">
@@ -63,6 +80,7 @@
 
     </main>
   </div>
+  
 </body>
 
 </html>

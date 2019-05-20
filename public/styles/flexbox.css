@@ -42,6 +42,10 @@ body .div-2 .container {
   font-weight: bolder;
   font-size: 2em;
 }
+#nav-bar h2 {
+  flex: 1.3;
+  color: black;
+}
 #nav-bar input.button {
   margin-top: 1em;
   height: 46px;
@@ -63,6 +67,37 @@ body .div-2 .container {
 #nav-bar input.not-clicked :hover {
   opacity: 1;
   border: 1.5px solid #343a40;
+}
+
+.login-register {
+  background-color: #343a40;
+  margin: 2em;
+  border-radius: 7px;
+  padding: 0.2em;
+}
+.login-register form {
+  padding: 0.5em;
+}
+.login-register form h4 {
+  margin-bottom: 2px;
+  margin-top: 0px;
+}
+.login-register form .user {
+  width: 100%;
+  height: 40px;
+  padding-left: 0.3em;
+  margin-bottom: 8px;
+}
+.login-register form a {
+  color: red;
+}
+.login-register .registration-error {
+  display: none;
+  margin: 0;
+  border-radius: 7px;
+  color: red;
+  text-align: center;
+  background-color: #343a40;
 }
 
 .new-tweet {
