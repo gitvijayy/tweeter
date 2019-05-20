@@ -1,17 +1,28 @@
 
+// var overlay =  () => {
+//   $.LoadingOverlay("show");
+//   setTimeout(function () {
+//     $.LoadingOverlay("hide");
+
+//   }, 1000);
+// }
 $(document).ready(function () {
+
   $(document).on(`click`, `.logout`, function (event) {
+
     event.preventDefault();
-    document.cookie = "email= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
-    console.log("ab")
+
+    document.cookie = "username= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
+
     location.reload();
   })
   $(document).on(`click`, `.login-register a`, function (event) {
     event.preventDefault();
+
     let type = $(this).siblings(".login-register-button").val();
-    let email = $(this).siblings(".email").val()
+    let username = $(this).siblings(".username").val()
     let password = $(this).siblings(".password").val()
-    console.log(email, password)
+
     if (type === "Login") {
       $(this).siblings(".login-register-button").val("Register")
       $(this).text("Click here to Login")
@@ -21,21 +32,23 @@ $(document).ready(function () {
     }
   });
 })
+
 $(document).on(`click`, `.login-register-button`, function (event) {
   event.preventDefault();
+
   let type = $(this).val();
-  let email = $(this).siblings(".email").val()
+  let username = $(this).siblings(".username").val()
   let password = $(this).siblings(".password").val()
   if (type === "Register") {
     $.ajax({
       type: `POST`,
       url: `/tweets/register`,
-      data: { email: email, password: password },
+      data: { username: username, password: password },
       success: () => {
-        $(".login-status").text(`Logged in as ${email}`)
-        $(".login-status").attr("data-id", email);
-        //$(".login-status").addClass(`Logged In`);
-        document.cookie = `email=${email}`;
+        $(".login-status").text(`Logged in as ${username}`)
+        $(".login-status").attr("data-id", username);
+
+        document.cookie = `username=${username}`;
         location.reload();
       },
       error: () => {
@@ -47,12 +60,11 @@ $(document).on(`click`, `.login-register-button`, function (event) {
     $.ajax({
       type: `POST`,
       url: `/tweets/login`,
-      data: { email: email, password: password },
+      data: { username: username, password: password },
       success: (result) => {
-        $(".login-status").text(`Logged in as ${email}`)
-        $(".login-status").attr("data-id", email);
-        //$(".login-status").addClass(`Logged In`);
-        document.cookie = `email=${email}`;
+        $(".login-status").text(`Logged in as ${username}`)
+        $(".login-status").attr("data-id", username);
+        document.cookie = `username=${username}`;
         location.reload();
       },
       error: () => {
@@ -61,4 +73,9 @@ $(document).on(`click`, `.login-register-button`, function (event) {
       }
     });
   }
+
+
+
 })
+
+

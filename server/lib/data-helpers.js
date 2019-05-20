@@ -29,7 +29,7 @@ module.exports = function makeDataHelpers(db) {
     },
 
     addUser: function (newUser, callback) {
-       db.collection("users").findOne({ email: newUser.email }, (err, result) => {
+       db.collection("users").findOne({ username: newUser.username }, (err, result) => {
         
         if (result === null) {
           
@@ -46,10 +46,9 @@ module.exports = function makeDataHelpers(db) {
     },
 
     checkUser: function (newUser, callback) {
-      db.collection("users").findOne({ email: newUser.email, password: newUser.password }
+      db.collection("users").findOne({ username: newUser.username, password: newUser.password }
         , (err, result) => {
-          console.log(result)
-          console.log(err)
+          
           if (result === null) {
             
             //console.log("exists")

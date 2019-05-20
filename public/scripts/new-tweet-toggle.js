@@ -23,7 +23,7 @@ $(document).ready(function () {
         $(this).removeClass(`clicked`).addClass(`not-clicked`)
       }
       $(`.error`).slideUp();
-      $(`.email`).focus();
+      $(`.username`).focus();
     }
   })
   if (!document.cookie.length) {

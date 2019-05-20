@@ -13,7 +13,7 @@ module.exports = {
     const lastName = chance.last();
     const userName = firstName + ` ` + lastName;
 
-    let userHandle = `@`;
+    let userHandle = `@Dr`
     if (Math.random() > 0.5) {
       let prefix = chance.prefix({ gender: gender });
       prefix = prefix.replace(`.`, ``);

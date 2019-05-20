@@ -64,7 +64,7 @@ $(document).ready(() => {
     $.ajax({
       type: `GET`,
       url: `/tweets`,
-      success: (tweetData,ab) => {
+      success: (tweetData) => {
         $(`.error`).slideUp();
         renderTweets(tweetData);
         // console.log(ab)
@@ -95,11 +95,13 @@ $(document).ready(() => {
       $(`.error`).text(`Tweet too long`);
     } else {
       $.ajax({
+        // console.log($(this).serialize())
         type: `POST`,
         url: `/tweets`,
-        data: $(this).serialize(),
+        data: $(this).serialize(),//,username:`${(document.cookie).split("=")[1]}`},
         success: () => {
           $(`.error`).slideUp();
+          
           getTweets();
         },
         error: () => {
