@@ -7,7 +7,7 @@ const bodyParser = require(`body-parser`);
 const app = express();
 const MongoClient = require(`mongodb`).MongoClient;
 const MONGODB_URI = process.env.MONGODB_URI;
-
+//mongodb://heroku_1z3jsnrc:fka36mot8qft09pjd9gppd0j2r@ds151076.mlab.com:51076/heroku_1z3jsnrc
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(`public`));

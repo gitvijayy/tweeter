@@ -5,7 +5,7 @@ $(document).ready(() => {
     var days, hrs, mins, secs, year;
     secs = Math.floor(milliseconds / 1000);
     mins = Math.floor(secs / 60);
-    secs = secs % 60;
+    secs = (secs % 60) + 1;
     hrs = Math.floor(mins / 60);
     mins = mins % 60;
     days = Math.floor(hrs / 24);
